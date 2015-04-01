@@ -1,0 +1,383 @@
+==8550== Memcheck, a memory error detector
+==8550== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
+==8550== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
+==8550== Command: ./avl
+==8550== 
+==8550== Invalid write of size 8
+==8550==    at 0x40080E: avl_insert (avl.c:48)
+==8550==    by 0x400A4B: main (main.c:9)
+==8550==  Address 0x51ba0b8 is 0 bytes after a block of size 8 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x4007EC: avl_insert (avl.c:46)
+==8550==    by 0x400A4B: main (main.c:9)
+==8550== 
+==8550== Invalid write of size 8
+==8550==    at 0x40081D: avl_insert (avl.c:49)
+==8550==    by 0x400A4B: main (main.c:9)
+==8550==  Address 0x51ba0c0 is 8 bytes after a block of size 8 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x4007EC: avl_insert (avl.c:46)
+==8550==    by 0x400A4B: main (main.c:9)
+==8550== 
+==8550== Invalid read of size 8
+==8550==    at 0x400C05: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba0c8 is not stack'd, malloc'd or (recently) free'd
+==8550== 
+==8550== Invalid read of size 8
+==8550==    at 0x400C19: pretty_print_subtree (pretty.c:59)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba0d0 is not stack'd, malloc'd or (recently) free'd
+==8550== 
+==8550== Invalid write of size 4
+==8550==    at 0x400D1E: pretty_print_subtree (pretty.c:70)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba3d1 is 1 bytes inside a block of size 2 alloc'd
+==8550==    at 0x4C272B8: calloc (vg_replace_malloc.c:566)
+==8550==    by 0x400CCE: pretty_print_subtree (pretty.c:68)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 2
+==8550==    at 0x400D24: pretty_print_subtree (pretty.c:70)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba3d5 is 3 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C272B8: calloc (vg_replace_malloc.c:566)
+==8550==    by 0x400CCE: pretty_print_subtree (pretty.c:68)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid read of size 1
+==8550==    at 0x4C291D4: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400D48: pretty_print_subtree (pretty.c:71)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba3d2 is 0 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C272B8: calloc (vg_replace_malloc.c:566)
+==8550==    by 0x400CCE: pretty_print_subtree (pretty.c:68)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 1
+==8550==    at 0x4C291EC: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400D48: pretty_print_subtree (pretty.c:71)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba3d6 is 4 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C272B8: calloc (vg_replace_malloc.c:566)
+==8550==    by 0x400CCE: pretty_print_subtree (pretty.c:68)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 1
+==8550==    at 0x4C29202: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400D48: pretty_print_subtree (pretty.c:71)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba3d7 is 5 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C272B8: calloc (vg_replace_malloc.c:566)
+==8550==    by 0x400CCE: pretty_print_subtree (pretty.c:68)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Conditional jump or move depends on uninitialised value(s)
+==8550==    at 0x400EAF: pretty_print_subtree (pretty.c:84)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 4
+==8550==    at 0x400F0F: pretty_print_subtree (pretty.c:86)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba421 is 1 bytes inside a block of size 2 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400E71: pretty_print_subtree (pretty.c:80)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 2
+==8550==    at 0x400F15: pretty_print_subtree (pretty.c:86)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba425 is 3 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400E71: pretty_print_subtree (pretty.c:80)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid read of size 1
+==8550==    at 0x4C291D4: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400F46: pretty_print_subtree (pretty.c:87)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba422 is 0 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400E71: pretty_print_subtree (pretty.c:80)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 1
+==8550==    at 0x4C291EC: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400F46: pretty_print_subtree (pretty.c:87)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba426 is 4 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400E71: pretty_print_subtree (pretty.c:80)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 1
+==8550==    at 0x4C29202: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400F46: pretty_print_subtree (pretty.c:87)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba427 is 5 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400E71: pretty_print_subtree (pretty.c:80)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid read of size 1
+==8550==    at 0x4C29514: __GI_strlen (mc_replace_strmem.c:391)
+==8550==    by 0x400CB8: pretty_print_subtree (pretty.c:68)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba3d2 is 0 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C272B8: calloc (vg_replace_malloc.c:566)
+==8550==    by 0x400CCE: pretty_print_subtree (pretty.c:68)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid read of size 1
+==8550==    at 0x4C291F3: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400D48: pretty_print_subtree (pretty.c:71)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba3d2 is 0 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C272B8: calloc (vg_replace_malloc.c:566)
+==8550==    by 0x400CCE: pretty_print_subtree (pretty.c:68)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 1
+==8550==    at 0x4C291EC: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400D48: pretty_print_subtree (pretty.c:71)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba5c8 is 0 bytes after a block of size 8 alloc'd
+==8550==    at 0x4C272B8: calloc (vg_replace_malloc.c:566)
+==8550==    by 0x400CCE: pretty_print_subtree (pretty.c:68)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 1
+==8550==    at 0x4C29202: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400D48: pretty_print_subtree (pretty.c:71)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba5cd is 5 bytes after a block of size 8 alloc'd
+==8550==    at 0x4C272B8: calloc (vg_replace_malloc.c:566)
+==8550==    by 0x400CCE: pretty_print_subtree (pretty.c:68)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid read of size 1
+==8550==    at 0x4C29514: __GI_strlen (mc_replace_strmem.c:391)
+==8550==    by 0x400D88: pretty_print_subtree (pretty.c:75)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba422 is 0 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400E71: pretty_print_subtree (pretty.c:80)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Conditional jump or move depends on uninitialised value(s)
+==8550==    at 0x400DCE: pretty_print_subtree (pretty.c:76)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid read of size 1
+==8550==    at 0x4C291F3: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400E25: pretty_print_subtree (pretty.c:77)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba422 is 0 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400E71: pretty_print_subtree (pretty.c:80)
+==8550==    by 0x400C10: pretty_print_subtree (pretty.c:58)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 1
+==8550==    at 0x4C291EC: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400E25: pretty_print_subtree (pretty.c:77)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba618 is 0 bytes after a block of size 8 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400D99: pretty_print_subtree (pretty.c:75)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 1
+==8550==    at 0x4C29202: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400E25: pretty_print_subtree (pretty.c:77)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba61d is 5 bytes after a block of size 8 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400D99: pretty_print_subtree (pretty.c:75)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Conditional jump or move depends on uninitialised value(s)
+==8550==    at 0x400EAF: pretty_print_subtree (pretty.c:84)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 4
+==8550==    at 0x400F0F: pretty_print_subtree (pretty.c:86)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba661 is 1 bytes inside a block of size 2 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400E71: pretty_print_subtree (pretty.c:80)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 2
+==8550==    at 0x400F15: pretty_print_subtree (pretty.c:86)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba665 is 3 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400E71: pretty_print_subtree (pretty.c:80)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid read of size 1
+==8550==    at 0x4C291D4: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400F46: pretty_print_subtree (pretty.c:87)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba662 is 0 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400E71: pretty_print_subtree (pretty.c:80)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 1
+==8550==    at 0x4C291EC: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400F46: pretty_print_subtree (pretty.c:87)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba666 is 4 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400E71: pretty_print_subtree (pretty.c:80)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 1
+==8550==    at 0x4C29202: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400F46: pretty_print_subtree (pretty.c:87)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba667 is 5 bytes after a block of size 2 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400E71: pretty_print_subtree (pretty.c:80)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid read of size 1
+==8550==    at 0x4C29514: __GI_strlen (mc_replace_strmem.c:391)
+==8550==    by 0x400ACA: avl_pretty_print (pretty.c:29)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba5c8 is 0 bytes after a block of size 8 alloc'd
+==8550==    at 0x4C272B8: calloc (vg_replace_malloc.c:566)
+==8550==    by 0x400CCE: pretty_print_subtree (pretty.c:68)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Conditional jump or move depends on uninitialised value(s)
+==8550==    at 0x4C291CA: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400B3B: avl_pretty_print (pretty.c:37)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid read of size 1
+==8550==    at 0x4C291F3: strcat (mc_replace_strmem.c:254)
+==8550==    by 0x400B3B: avl_pretty_print (pretty.c:37)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba5c8 is 0 bytes after a block of size 8 alloc'd
+==8550==    at 0x4C272B8: calloc (vg_replace_malloc.c:566)
+==8550==    by 0x400CCE: pretty_print_subtree (pretty.c:68)
+==8550==    by 0x400A97: avl_pretty_print (pretty.c:21)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid write of size 2
+==8550==    at 0x400B6A: avl_pretty_print (pretty.c:38)
+==8550==    by 0x400A57: main (main.c:12)
+==8550==  Address 0x51ba6d3 is 35 bytes inside a block of size 36 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400B00: avl_pretty_print (pretty.c:33)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+==8550== Invalid read of size 1
+==8550==    at 0x4E74CBA: vfprintf (vfprintf.c:1623)
+==8550==    by 0x4E7D479: printf (printf.c:35)
+==8550==    by 0x400A71: main (main.c:13)
+==8550==  Address 0x51ba6d4 is 0 bytes after a block of size 36 alloc'd
+==8550==    at 0x4C28BED: malloc (vg_replace_malloc.c:263)
+==8550==    by 0x400B00: avl_pretty_print (pretty.c:33)
+==8550==    by 0x400A57: main (main.c:12)
+==8550== 
+3 --- 2 --- X
+|      \--- X
+ \--- X
+==8550== 
+==8550== HEAP SUMMARY:
+==8550==     in use at exit: 228 bytes in 20 blocks
+==8550==   total heap usage: 21 allocs, 1 frees, 264 bytes allocated
+==8550== 
+==8550== LEAK SUMMARY:
+==8550==    definitely lost: 128 bytes in 6 blocks
+==8550==    indirectly lost: 100 bytes in 14 blocks
+==8550==      possibly lost: 0 bytes in 0 blocks
+==8550==    still reachable: 0 bytes in 0 blocks
+==8550==         suppressed: 0 bytes in 0 blocks
+==8550== Rerun with --leak-check=full to see details of leaked memory
+==8550== 
+==8550== For counts of detected and suppressed errors, rerun with: -v
+==8550== Use --track-origins=yes to see where uninitialised values come from
+==8550== ERROR SUMMARY: 109 errors from 35 contexts (suppressed: 4 from 4)
