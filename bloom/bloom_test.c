@@ -14,7 +14,7 @@ int do_test(TEST *test);
 int test_init(BLOOM *b);
 
 TEST TESTS[] = {
-	{"init", &test_init},
+    {"init", &test_init},
 };
 int NUM_TESTS = sizeof(TESTS) / sizeof(TEST);
 
@@ -54,7 +54,7 @@ int do_test(TEST *test) {
 int test_init(BLOOM *b) {
     int idx = 0;
     for (idx = 0; idx < 100; idx++) {
-		BLOOM_MEMBER m = {&idx, sizeof(int)};
+        BLOOM_MEMBER m = {&idx, sizeof(int)};
         if (bloom_contains(b, m))
             return FAIL;
     }
