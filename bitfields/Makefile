@@ -1,24 +1,15 @@
-compile_bitfields:
-	gcc -c ../bitfields/bitfields.c
+include ../Makefile
 
-package_bitfields: compile_bitfields
-	ar -cvq libbitfields.a bitfields.o
+bitfields_dir = ../bitfields
 
-compile_bitfields_tests:
-	gcc ../bitfields/*.c -o bitfields_tests
+compile_bitfields: make_obj_dir
+	cd ${obj_dir} && gcc -c ${bitfields_dir}/bitfields.c
 
-test_bitfields: clean_bitfields compile_bitfields_tests
-	./bitfields_tests
+package_bitfields: compile_bitfields make_obj_dir make_dist_dir
+	ar -cvq ${dist_dir}/libbitfields.a ${obj_dir}/bitfields.o
 
-clean_bitfields_objects:
-	@-rm ../bitfields/*.o 2> /dev/null ||:
+compile_bitfields_tests: make_bin_dir
+	gcc ${bitfields_dir}/*.c -o ${bin_dir}/bitfields_tests
 
-clean_bitfields_libraries:
-	@-rm libbitfields.a 2> /dev/null ||:
-
-clean_bitfields_binaries:
-	@rm ../bitfields/bitfield_test 2>/dev/null ||:
-
-clean_bitfields: clean_bitfields_objects clean_bitfields_libraries clean_bitfields_binaries
-
-
+test_bitfields: clean_obj_dir clean_bin_dir compile_bitfields_tests
+	${bin_dir}/bitfields_tests

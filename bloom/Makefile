@@ -1,14 +1,9 @@
 include ../bitfields/Makefile
 
-compile_test_script: package_bitfields
-	gcc -I../bitfields murmur3.c bloom.c bloom_test.c -L. -lbitfields -o bloom_test
+bloom_dir = ../bloom
 
-test_bloom: compile_test_script
-	./bloom_test
+compile_test_script: package_bitfields make_dist_dir make_bin_dir
+	cd ${bloom_dir} && gcc -I${bitfields_dir} murmur3.c bloom.c bloom_test.c -L${dist_dir} -lbitfields -o ${bin_dir}/bloom_tests
 
-all: bloom_test.c
-
-clean:
-	@-rm bloom_test 2>/dev/null ||:
-
-test: clean bloom_test run_test_script
+test_bloom: clean_dist_dir clean_obj_dir clean_bin_dir compile_test_script
+	${bin_dir}/bloom_tests
