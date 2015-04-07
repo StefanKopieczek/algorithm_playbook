@@ -1,7 +1,9 @@
-bloom_test:
-	gcc -I../bitfield ../bitfield/bitfield.c murmur3.c bloom.c bloom_test.c -o bloom_test
+include ../bitfields/Makefile
 
-run_test_script:
+compile_test_script: package_bitfields
+	gcc -I../bitfields murmur3.c bloom.c bloom_test.c -L. -lbitfields -o bloom_test
+
+test_bloom: compile_test_script
 	./bloom_test
 
 all: bloom_test.c

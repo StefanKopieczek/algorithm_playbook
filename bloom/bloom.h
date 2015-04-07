@@ -1,7 +1,7 @@
 #ifndef SMK_BLOOM
 #define SMK_BLOOM
 
-#include "bitfield.h"
+#include "bitfields.h"
 #include <stdint.h>
 
 typedef struct bloom_member {

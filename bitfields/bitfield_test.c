@@ -1,4 +1,4 @@
-#include "bitfield.h"
+#include "bitfields.h"
 
 #include <stdio.h>
 
