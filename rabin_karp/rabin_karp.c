@@ -1,10 +1,13 @@
+#include "bloom.h"
 #include "rabin_karp.h"
+
+#include <assert.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define DEBUG 1
+#define DEBUG 0
 
 // The prime number used as the base in the rolling hash function.
 // TODO: Generate this dynamically according to the input data.
@@ -14,9 +17,20 @@
 // TODO: Generate this dynamically according to the input data.
 #define HASH_MOD 1000
 
+// The width of the bloom filter used to store target hashes for the
+// multi-match function.
+// TODO: Generate this dynamically according to the input data.
+#define BLOOM_SIZE 100
+
+// The number of internal hashes used by the bloom filter, which we use to
+// store the text hashes for the targets in the multi-match function.
+// TODO: Generate this dynamically according to the input data.
+#define BLOOM_NUM_HASHES 10
+
 static void debug(char *text, ...);
 static unsigned int hash_init(char *start, int length);
 static unsigned int roll_hash(unsigned int previous, char old, char new, int length);
+static int min_length(char **strings, int num_strings);
 static int naive_compare(char *a, char *b, int length);
 static int mod_mult(int a, int b, int mod);
 static int mod_div(int p, int q, int mod);
@@ -37,8 +51,14 @@ int *rabin_karp_match(char *text, char *s) {
     while (text[idx]) {
         debug("Text hash at %d is %u\n", idx, text_hash);
         if (s_hash == text_hash) {
-            matches[match_idx] = idx;
-            match_idx++;
+            if (naive_compare(text + idx, s, s_len)) {
+                matches[match_idx] = idx;
+                match_idx++;
+            }
+            else
+            {
+                debug("False match at %d\n", idx);
+            }
         }
 
         idx++;
@@ -51,7 +71,62 @@ int *rabin_karp_match(char *text, char *s) {
     return matches;
 }
 
-int *rabin_karp_multi_match(char *text, char **s) {
+int *rabin_karp_multi_match(char *text, char **s, int num_targets) {
+    int *matches = malloc(strlen(text) * sizeof(int));
+    int match_idx = 0;
+
+    int prefix_size = min_length(s, num_targets);
+
+    unsigned int text_hash = hash_init(text, prefix_size);
+
+    BLOOM *target_hashes = new_bloom(BLOOM_SIZE, &standard_hash, BLOOM_NUM_HASHES);
+    int target_idx;
+    for (target_idx = 0; target_idx < num_targets; target_idx++) {
+        int target_hash = hash_init(s[target_idx], prefix_size);
+        BLOOM_MEMBER hash_data = {&target_hash, sizeof(int)};
+        bloom_add(target_hashes, hash_data);
+    }
+
+    int idx = 0;
+    while (text[idx]) {
+        debug("Text hash at %d is %u\n", idx, text_hash);
+        BLOOM_MEMBER hash_data = {&text_hash, sizeof(int)};
+        if (bloom_contains(target_hashes, hash_data)) {
+            int target_idx;
+            for (target_idx = 0; target_idx < num_targets; target_idx++) {
+                if (naive_compare(text + idx, s[target_idx], strlen(s[target_idx]))) {
+                    matches[match_idx] = idx;
+                    match_idx++;
+                    break;
+                }
+            }
+
+            if (target_idx == num_targets) {
+                debug("False match at %d\n!", idx);
+            }
+        }
+
+        idx++;
+        text_hash = roll_hash(text_hash, text[idx-1], text[idx + prefix_size - 1], prefix_size);
+    }
+
+    matches[match_idx] = -1;
+    matches = realloc(matches, sizeof(int) * (match_idx + 1));
+
+    return matches;
+}
+
+static int min_length(char **strings, int num_strings) {
+    assert(num_strings > 0);
+    int min_length = strlen(strings[0]);
+    int idx;
+    for (idx = 1; idx < num_strings; idx++) {
+        int len = strlen(strings[idx]);
+        if (len < min_length)
+            min_length = len;
+    }
+
+    return min_length;
 }
 
 static unsigned int hash_init(char *text, int length) {

@@ -5,6 +5,6 @@
 
 int *rabin_karp_match(char *text, char *s);
 
-int *rabin_karp_multi_match(char *text, char **s);
+int *rabin_karp_multi_match(char *text, char **s, int num_targets);
 
 #endif
